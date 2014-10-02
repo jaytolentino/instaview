@@ -14,3 +14,7 @@ Completed user stories:
 * _Optional:_ Display each user profile image using a CircularImageView
 * _Optional:_ Improve the user interface through styling and coloring
 * _Optional:_ Allow user to view all comments for an image with a separate screen or dialog fragment
+
+Libraries used:
+- android-async-http-1.4.5
+- picasso-2.3.4

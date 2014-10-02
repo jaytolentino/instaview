@@ -4,5 +4,9 @@
     <string name="app_name">Instaview</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="popular_photos_caption">Popular Photos</string>
+    <string name="username">username</string>
+    <string name="caption">A caption belongs here</string>
+    <string name="likes">0</string>
 
 </resources>

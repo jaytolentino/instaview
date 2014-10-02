@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/picasso-2.3.4-bb54c06891bd682bbd28de484503c552ffb31c8b.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/picasso-2.3.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3b646ddbdac8a33fc45b64564011da81d23e4635"/>
+    <item
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-3498c5dd845535e0f02e41f6c7518325b5ed8936.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881"/>
+
+</pre-dex-items>
