@@ -11,7 +11,7 @@ Completed user stories:
 * _Optional:_ Add pull-to-refresh for popular stream with SwipeRefreshLayout
 * _Optional:_ Show latest comment for each photo (bonus: show last 2 comments)
 * _Optional:_ Display each photo with the same style and proportions as the real Instagram
-
+- - -
 * _Optional:_ Display each user profile image using a CircularImageView
 * _Optional:_ Improve the user interface through styling and coloring
 * _Optional:_ Allow user to view all comments for an image with a separate screen or dialog fragment
