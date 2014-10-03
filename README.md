@@ -18,3 +18,4 @@ Completed user stories:
 Libraries used:
 - android-async-http-1.4.5
 - picasso-2.3.4
+- android-support-v4
