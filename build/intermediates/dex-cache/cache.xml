@@ -2,16 +2,46 @@
 <pre-dex-items>
 
     <item
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-3498c5dd845535e0f02e41f6c7518325b5ed8936.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881"/>
+    <item
         dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/picasso-2.3.4-bb54c06891bd682bbd28de484503c552ffb31c8b.jar"
         jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/picasso-2.3.4.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="3b646ddbdac8a33fc45b64564011da81d23e4635"/>
     <item
-        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-3498c5dd845535e0f02e41f6c7518325b5ed8936.jar"
-        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/android-async-http-1.4.5.jar"
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/android-support-v7-appcompat-91ee78d66a2702e644a492ed94f3eb909327aad2.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/android-support-v7-appcompat.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881"/>
+        sha1="21297ae2bf22a0ce81c9b59992cf0693eec45d5b"/>
+    <item
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/classes-3725df114479545af9144f080163ba5e0c5bd7ec.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/exploded-aar/com.github.castorflex.smoothprogressbar/library/0.4.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6ca319f998430aa20c4dde97ba6df213d6cf3dd0"/>
+    <item
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/android-support-annotations-9e075dce9332d15758763a57da4d541890804c13.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/android-support-annotations.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b41d8d70d216eaa6ce50574a99214fbe8b893e29"/>
+    <item
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/android-support-v4-1ce062a3079414f79bb662a3e41f49ddef6cf001.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/android-support-v4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="ded9acc6a9792b8f1afc470f0c9cd36d178914cd"/>
+    <item
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/classes-87ac088aa49449a141d5c36cb586a8ee94507642.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/exploded-aar/com.github.chrisbanes.actionbarpulltorefresh/library/0.9.9/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="06ca4ea902f14efb76284d918edb085df33cc365"/>
 
 </pre-dex-items>

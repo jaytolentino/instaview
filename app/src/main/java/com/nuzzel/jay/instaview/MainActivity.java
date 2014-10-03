@@ -2,10 +2,12 @@ package com.nuzzel.jay.instaview;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -22,27 +24,32 @@ public class MainActivity extends Activity {
     private final String CLIENT_ID = "d48f8f8f9d594a038828a246419a8d7d";
     private ArrayList<Photo> photos;
     private PhotosAdapter aPhotos;
+    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setupSwipeRefresh();
+
+        photos = new ArrayList<Photo>();
+        aPhotos = new PhotosAdapter(this, photos);
+        ListView lvPhotos = (ListView) findViewById(R.id.lvPhotos);
+        lvPhotos.setAdapter(aPhotos);
+
         fetchPopularPhotos();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
@@ -50,12 +57,21 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void fetchPopularPhotos() {
-        photos = new ArrayList<Photo>();
-        aPhotos = new PhotosAdapter(this, photos);
-        ListView lvPhotos = (ListView) findViewById(R.id.lvPhotos);
-        lvPhotos.setAdapter(aPhotos);
+    private void setupSwipeRefresh() {
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //swipeContainer.setEnabled(false);
+                fetchPopularPhotos();
+                swipeContainer.setRefreshing(false);
+                //swipeContainer.setEnabled(true);
+            }
+        });
+    }
 
+
+    private void fetchPopularPhotos() {
         String popularUrl = "https://api.instagram.com/v1/media/popular?client_id=" + CLIENT_ID;
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -78,17 +94,16 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            public void onFailure(int statusCode, Header[] headers,
+                                  String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
             }
 
             private Photo createPhoto(JSONObject data) {
                 try {
                     Photo photo = new Photo();
-
                     photo.username = data.getJSONObject("user").getString("username");
-
-                    if (data.getJSONObject("caption") != null) {
+                    if (!data.isNull("caption")) {
                         photo.caption = data.getJSONObject("caption").getString("text");
                     }
 
