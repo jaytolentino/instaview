@@ -82,10 +82,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="android-support-v4" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.3.4" level="project" />
-    <orderEntry type="library" exported="" name="library-0.9.9" level="project" />
-    <orderEntry type="library" exported="" name="android-support-annotations" level="project" />
-    <orderEntry type="library" exported="" name="library-0.4.0" level="project" />
-    <orderEntry type="library" exported="" name="android-support-v7-appcompat" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.5" level="project" />
   </component>
 </module>

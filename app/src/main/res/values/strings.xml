@@ -8,5 +8,6 @@
     <string name="username">username</string>
     <string name="caption">A caption belongs here</string>
     <string name="likes">0</string>
+    <string name="comment">a comment</string>
 
 </resources>

@@ -113,6 +113,9 @@ public class MainActivity extends Activity {
                             .getJSONObject("standard_resolution").getInt("height");
 
                     photo.likesCount = data.getJSONObject("likes").getInt("count");
+
+                    JSONArray commentData = data.getJSONObject("comments").getJSONArray("data");
+                    photo.comment = commentData.getJSONObject(commentData.length()-1).getString("text");
                     return photo;
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
