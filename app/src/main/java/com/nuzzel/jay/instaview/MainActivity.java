@@ -116,7 +116,13 @@ public class MainActivity extends Activity {
 
                     JSONArray commentData = data.getJSONObject("comments").getJSONArray("data");
                     if(data.getJSONObject("comments").getInt("count") > 0) {
-                        photo.comment = commentData.getJSONObject(commentData.length()-1).getString("text");
+                        JSONObject currentComment = commentData.getJSONObject(commentData.length()-1);
+                        photo.comment.content = currentComment.getString("text");
+                        photo.comment.author.username = currentComment
+                                .getJSONObject("from").getString("username");
+                        photo.comment.author.profileImgUrl = currentComment
+                                .getJSONObject("from").getString("profile_picture");
+
                     }
                     return photo;
                 } catch (JSONException e) {
