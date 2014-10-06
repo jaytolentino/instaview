@@ -13,10 +13,10 @@ Completed user stories:
 * _Optional:_ Display each photo with the same style and proportions as the real Instagram
 * _Optional:_ Display each user profile image using a RoundedImageView
 * _Optional:_ Display a nice default placeholder graphic for each image during loading (read more about Picasso)
+* _Optional:_ Improve the user interface through styling and coloring
 
 - - -
 
-* _Optional:_ Improve the user interface through styling and coloring
 * _Optional:_ Allow user to view all comments for an image with a separate screen or dialog fragment
 
 Used:
