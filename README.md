@@ -11,7 +11,7 @@ Completed user stories:
 * _Optional:_ Add pull-to-refresh for popular stream with SwipeRefreshLayout
 * _Optional:_ Show latest comment for each photo (bonus: show last 2 comments)
 * _Optional:_ Display each photo with the same style and proportions as the real Instagram
-* _Optional:_ Display each user profile image using a CircularImageView
+* _Optional:_ Display each user profile image using a RoundedImageView
 
 - - -
 
@@ -21,6 +21,6 @@ Completed user stories:
 
 Used:
 - android-async-http-1.4.5
-- picasso-2.3.4
 - android-support-v4
+- [Picasso Image Library](http://square.github.io/picasso/)
 - [RoundedImageView](https://github.com/vinc3m1/RoundedImageView)
