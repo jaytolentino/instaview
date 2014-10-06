@@ -102,7 +102,9 @@ public class MainActivity extends Activity {
             private Photo createPhoto(JSONObject data) {
                 try {
                     Photo photo = new Photo();
-                    photo.username = data.getJSONObject("user").getString("username");
+                    photo.author.username = data.getJSONObject("user").getString("username");
+                    photo.author.profileImgUrl = data.getJSONObject("user").
+                            getString("profile_picture");
                     if (!data.isNull("caption")) {
                         photo.caption = data.getJSONObject("caption").getString("text");
                     }
