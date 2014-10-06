@@ -105,15 +105,13 @@ public class MainActivity extends Activity {
                     photo.author.username = data.getJSONObject("user").getString("username");
                     photo.author.profileImgUrl = data.getJSONObject("user").
                             getString("profile_picture");
+
                     if (!data.isNull("caption")) {
                         photo.caption = data.getJSONObject("caption").getString("text");
                     }
 
                     photo.imgUrl = data.getJSONObject("images")
                             .getJSONObject("standard_resolution").getString("url");
-                    photo.imgHeight = data.getJSONObject("images")
-                            .getJSONObject("standard_resolution").getInt("height");
-
                     photo.likesCount = data.getJSONObject("likes").getInt("count");
 
                     JSONArray commentData = data.getJSONObject("comments").getJSONArray("data");

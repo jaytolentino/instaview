@@ -18,7 +18,8 @@ Completed user stories:
 * _Optional:_ Improve the user interface through styling and coloring
 * _Optional:_ Allow user to view all comments for an image with a separate screen or dialog fragment
 
-Libraries used:
+Used:
 - android-async-http-1.4.5
 - picasso-2.3.4
 - android-support-v4
+- [RoundedImageView](https://github.com/vinc3m1/RoundedImageView)

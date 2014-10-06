@@ -14,16 +14,16 @@
         revision="20.0.0"
         sha1="3b646ddbdac8a33fc45b64564011da81d23e4635"/>
     <item
-        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/circularimageview-27cecb8645148a0819d0e62181e501a35553b8ee.jar"
-        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/circularimageview.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="18d6e9049ed1db5405f0c2bfaa7963f1f433cbbb"/>
-    <item
         dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/android-support-v4-1ce062a3079414f79bb662a3e41f49ddef6cf001.jar"
         jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/libs/android-support-v4.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="ded9acc6a9792b8f1afc470f0c9cd36d178914cd"/>
+    <item
+        dex="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/pre-dexed/debug/classes-935e687842a94de94fd104e5521bf103193e5e39.jar"
+        jar="/Users/jay/AndroidStudioProjects/CodePath/Instaview/app/build/intermediates/exploded-aar/com.makeramen/roundedimageview/1.3.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3812f89e64ae0e865df72574ffe7c5a516e1cc91"/>
 
 </pre-dex-items>
