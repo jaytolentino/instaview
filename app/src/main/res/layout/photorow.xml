@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userImageHolder">
+
+            <com.nuzzel.jay.instaview.FullImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgPhoto"
+                android:layout_gravity="center_horizontal|top"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher"
+                android:layout_below="@+id/frameLayout2"
+                android:layout_alignParentStart="true" />
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userHolder"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+
+                android:padding="5dip"
+                android:background="@color/white"
+                >
+
+                <com.makeramen.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="25dip"
+                    android:layout_height="25dip"
+                    android:id="@+id/ivUserProfilePicture"
+                    android:layout_gravity="left|center_vertical"
+                    android:src="@drawable/ic_lancher"
+                    android:scaleType="centerCrop"
+                    app:corner_radius="35dip"
+                    app:mutate_background="true"
+                    app:oval="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:id="@+id/tvUsername"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_below="@+id/tvCaption"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_lancher"
+                    android:textSize="12dp"
+                    android:layout_marginLeft="40dip"/>
+
+            </FrameLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/likesHolder"
+        android:layout_below="@id/userImageHolder"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/like"
+            android:id="@+id/likeImage"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLikes"
+            android:layout_gravity="left"
+            android:text="@string/likes"
+            android:textSize="12dp"
+            android:layout_marginLeft="20dp"/>
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/likesHolder"
+        android:id="@+id/captionHolder">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvCaption"
+            android:layout_gravity="left"
+            android:textSize="12dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="view all comments"
+        android:id="@+id/viewComments"
+        android:textSize="12dp"
+        android:paddingTop="5dp"
+        android:layout_gravity="left"
+        android:layout_below="@+id/captionHolder"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comment"
+        android:id="@+id/tvComment1"
+        android:layout_gravity="left"
+        android:textSize="12dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="@dimen/standard_padding"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/viewComments" />
+
+</RelativeLayout>

@@ -1,6 +1,6 @@
 .gitignore
 .idea/
-app/
+Instaview.iml
 build.gradle
 gradle.properties
 gradle/
