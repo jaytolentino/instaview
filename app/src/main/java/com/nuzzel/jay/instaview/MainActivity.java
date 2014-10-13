@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -78,12 +77,12 @@ public class MainActivity extends Activity {
         client.get(popularUrl, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                JSONArray photosJSON=  null;
+                JSONArray photosJson =  null;
                 try {
                     photos.clear();
-                    photosJSON = response.getJSONArray("data");
-                    for (int i = 0; i < photosJSON.length(); i++) {
-                        JSONObject photoData = photosJSON.getJSONObject(i);
+                    photosJson = response.getJSONArray("data");
+                    for (int i = 0; i < photosJson.length(); i++) {
+                        JSONObject photoData = photosJson.getJSONObject(i);
                         Photo photo = createPhoto(photoData);
                         photos.add(photo);
                     }
@@ -113,19 +112,18 @@ public class MainActivity extends Activity {
                     photo.imgUrl = data.getJSONObject("images")
                             .getJSONObject("standard_resolution").getString("url");
                     photo.likesCount = data.getJSONObject("likes").getInt("count");
+                    photo.mediaId = data.getString("id");
+                    photo.commentCount = data.getJSONObject("comments").getInt("count");
 
                     JSONArray commentData = data.getJSONObject("comments").getJSONArray("data");
-                    if(data.getJSONObject("comments").getInt("count") > 0) {
-                        for(int i = 0; i < commentData.length(); i++) {
-                            Comment commentToAdd = new Comment(
-                                    new User(
-                                        commentData.getJSONObject(i).getJSONObject("from").getString("username"),
-                                        commentData.getJSONObject(i).getJSONObject("from").getString("profile_picture")
-                                    ),
-                                    commentData.getJSONObject(i).getString("text"));
-                            photo.addComment(commentToAdd);
-                        }
-                    }
+                    JSONObject lastCommentData = commentData.getJSONObject(commentData.length() - 1);
+                    User commentAuthor = new User(
+                            lastCommentData.getJSONObject("from").getString("username"),
+                            lastCommentData.getJSONObject("from").getString("profile_picture")
+                    );
+                    String content = lastCommentData.getString("text");
+                    photo.lastComment = new Comment(commentAuthor, content);
+
                     return photo;
                 } catch (JSONException e) {
                     throw new RuntimeException(e);

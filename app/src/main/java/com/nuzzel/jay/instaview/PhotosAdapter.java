@@ -46,7 +46,7 @@ public class PhotosAdapter extends ArrayAdapter<Photo>{
         convertView = addUsername(photo, convertView);
         convertView = addProfileImage(photo, convertView);
         convertView = addLikes(photo, convertView);
-        convertView = addLastComment(photo.getLastComment(), convertView);
+        convertView = addLastComment(photo.lastComment, convertView);
         convertView = addViewComments(photo, convertView);
         return convertView;
     }
@@ -106,21 +106,18 @@ public class PhotosAdapter extends ArrayAdapter<Photo>{
 
     private View addViewComments(Photo photo, View convertView) {
         TextView viewComments = (TextView) convertView.findViewById(R.id.viewComments);
-        String fullViewComment = "<font color='gray'>view all " + photo.comments.size() + " comments</gray>";
+        String fullViewComment = "<font color='gray'>view all " + photo.commentCount + " comments</gray>";
         viewComments.setText(Html.fromHtml(fullViewComment));
-        setupClickListener(viewComments, photo.commentContents, photo.commentUsernames);
+        setupClickListener(viewComments, photo.mediaId);
         return convertView;
     }
 
-    private void setupClickListener(TextView viewCommentsButton,
-                                    final ArrayList<String> comments,
-                                    final ArrayList<String> usernames) {
+    private void setupClickListener(TextView viewCommentsButton, final String mediaId) {
         viewCommentsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent viewCommentsActivity = new Intent(getContext(), ViewCommentsActivity.class);
-                viewCommentsActivity.putStringArrayListExtra("comments", comments);
-                viewCommentsActivity.putStringArrayListExtra("usernames", usernames);
+                viewCommentsActivity.putExtra("mediaId", mediaId);
                 getContext().startActivity(viewCommentsActivity);
             }
         });

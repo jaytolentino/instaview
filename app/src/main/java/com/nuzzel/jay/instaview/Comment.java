@@ -12,9 +12,6 @@ public class Comment implements Parcelable, Serializable {
     public String content;
     public User author;
 
-    public Comment() {
-        author = new User();
-    }
     public Comment(User author, String content) {
         this.author = author;
         this.content = content;

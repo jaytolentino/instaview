@@ -13,22 +13,12 @@ public class Photo implements Serializable {
     public String imgUrl;
     public int likesCount;
     public List<Comment> comments;
-    public ArrayList<String> commentContents;
-    public ArrayList<String> commentUsernames;
+    public int commentCount;
+    public String mediaId;
+    public Comment lastComment;
 
     public Photo() {
         author = new User();
         comments = new ArrayList<Comment>();
-        commentContents = new ArrayList<String>();
-    }
-
-    public void addComment(Comment c) {
-        comments.add(c);
-        commentContents.add(c.content);
-        commentUsernames.add(c.author.username);
-    }
-
-    public Comment getLastComment() {
-        return comments.get(comments.size() - 1);
     }
 }

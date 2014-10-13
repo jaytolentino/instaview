@@ -2,35 +2,38 @@ package com.nuzzel.jay.instaview;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 
 public class ViewCommentsActivity extends Activity {
-    ArrayList<String> comments;
+    private final String CLIENT_ID = "d48f8f8f9d594a038828a246419a8d7d";
     CommentsAdapter commentsAdapter;
+    ArrayList<String> commentDataForAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_comments);
         ListView lvComments = (ListView) findViewById(R.id.lvComments);
+        commentDataForAdapter = new ArrayList<String>();
 
-        comments = getIntent().getStringArrayListExtra("comments");
-//        ArrayList<String> usernames = getIntent().getStringArrayListExtra("usernames");
-//        for(int i = 0; i < contents.size(); i++) {
-//            comments.add("<strong><font color='navy'>" + usernames.get(i)
-//                         + "</font></strong> " + comments.get(i));
-//        }
+        fetchComments();
 
-        commentsAdapter = new CommentsAdapter(this, comments);
+        commentsAdapter = new CommentsAdapter(this, commentDataForAdapter);
         lvComments.setAdapter(commentsAdapter);
     }
 
@@ -54,8 +57,49 @@ public class ViewCommentsActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void testToast() {
-        Toast.makeText(this, "TEST!", Toast.LENGTH_SHORT).show();
-    }
+    private void fetchComments() {
+        String mediaId = getIntent().getStringExtra("mediaId");
+        String commentsUrl = "https://api.instagram.com/v1/media/"
+                + mediaId
+                + "/comments?client_id="
+                + CLIENT_ID;
+        AsyncHttpClient client = new AsyncHttpClient();
 
+        client.get(commentsUrl, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                JSONArray commentsJson = null;
+                try {
+                    commentDataForAdapter.clear();
+                    commentsJson = response.getJSONArray("data");
+                    for (int i = 0; i < commentsJson.length(); i++) {
+                        JSONObject commentData = commentsJson.getJSONObject(i);
+                        String comment = createComment(commentData);
+                        commentDataForAdapter.add(comment);
+                    }
+                    commentsAdapter.notifyDataSetChanged();
+                } catch (JSONException e) {
+                    e. printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers,
+                                  String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+            }
+
+            private String createComment(JSONObject data) {
+                try {
+                    String fullCommentText = "<strong><font color='navy'>"
+                            + data.getJSONObject("from").getString("username")
+                            + "</font></strong> " + data.getString("text");
+                    return fullCommentText;
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        });
+    }
 }

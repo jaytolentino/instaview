@@ -1,6 +1,7 @@
 package com.nuzzel.jay.instaview;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class CommentsAdapter extends ArrayAdapter<String> {
         }
 
         TextView tvCommentContent = (TextView) convertView.findViewById(R.id.tvCommentContent);
-        tvCommentContent.setText(comment);
+        tvCommentContent.setText(Html.fromHtml(comment));
         return convertView;
     }
 }
