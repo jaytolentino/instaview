@@ -20,7 +20,7 @@ Completed user stories:
 
 ## User Story Walkthrough
 
-![User Story Walkthrough](/gif/instaview_all.gif)
+<img src="/gif/instaview_all.gif" width="300"/>
 
 - - -
 
