@@ -1,4 +1,4 @@
-instaview
+Instaview
 =========
 
 Android app for viewing popular Instagram photos.
@@ -15,6 +15,12 @@ Completed user stories:
 * _Optional:_ Display a nice default placeholder graphic for each image during loading (read more about Picasso)
 * _Optional:_ Improve the user interface through styling and coloring
 * _Optional:_ Allow user to view all comments for an image with a separate screen or dialog fragment
+
+- - -
+
+## User Story Walkthrough
+
+![User Story Walkthrough](/gif/instaview_all.gif)
 
 - - -
 
