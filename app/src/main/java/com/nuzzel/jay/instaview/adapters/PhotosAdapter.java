@@ -32,82 +32,88 @@ public class PhotosAdapter extends ArrayAdapter<Photo>{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         Photo currentPhoto = getItem(position);
+        ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.photorow, parent, false);
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.photorow, parent, false);
+            setViews(viewHolder, convertView);
+            convertView.setTag(viewHolder);
         }
-        return populatePhotoView(currentPhoto, convertView);
-    }
-
-    private View populatePhotoView(Photo photo, View convertView) {
-        convertView = addCaption(photo, convertView);
-        convertView = addPhotoImage(photo, convertView);
-        convertView = addUsername(photo, convertView);
-        convertView = addProfileImage(photo, convertView);
-        convertView = addLikes(photo, convertView);
-        convertView = addLastComment(photo.lastComment, convertView);
-        convertView = addViewComments(photo, convertView);
+        else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
+        populatePhotoView(currentPhoto, viewHolder);
         return convertView;
     }
 
-    private View addCaption(Photo photo, View convertView) {
-        TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
+    private void setViews(ViewHolder viewHolder, View convertView) {
+        viewHolder.tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
+        viewHolder.imgPhoto = (FullImageView) convertView.findViewById(R.id.imgPhoto);
+        viewHolder.tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
+        viewHolder.ivUserProfilePicture = (RoundedImageView)
+                convertView.findViewById(R.id.ivUserProfilePicture);
+        viewHolder.tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
+        viewHolder.tvComment = (TextView) convertView.findViewById(R.id.tvComment1);
+        viewHolder.viewComments = (TextView) convertView.findViewById(R.id.viewComments);
+    }
+
+    private void populatePhotoView(Photo photo, ViewHolder viewHolder) {
+        addCaption(photo, viewHolder);
+        addPhotoImage(photo, viewHolder);
+        addUsername(photo, viewHolder);
+        addProfileImage(photo, viewHolder);
+        addLikes(photo, viewHolder);
+        addLastComment(photo.lastComment, viewHolder);
+        addViewComments(photo, viewHolder);
+    }
+
+    private void addCaption(Photo photo, ViewHolder viewHolder) {
         if (photo.caption != null) {
             String fullCaption = "<strong><font color='navy'>" + photo.author.username + "</font></strong> " + photo.caption;
-            tvCaption.setText(Html.fromHtml(fullCaption));
-        } else {
-            tvCaption.refreshDrawableState();
+            viewHolder.tvCaption.setText(Html.fromHtml(fullCaption));
         }
-        return convertView;
+        else {
+            viewHolder.tvCaption.refreshDrawableState();
+        }
     }
 
-    private View addPhotoImage(Photo photo, View convertView) {
-        FullImageView imgPhoto = (FullImageView) convertView.findViewById(R.id.imgPhoto);
-        imgPhoto.setImageResource(0);
+    private void addPhotoImage(Photo photo, ViewHolder viewHolder) {
+        viewHolder.imgPhoto.setImageResource(0);
         Picasso.with(getContext())
                 .load(photo.imgUrl)
                 .placeholder(R.drawable.ic_launcher)
-                .into(imgPhoto);
-        return convertView;
+                .into(viewHolder.imgPhoto);
     }
 
-    private View addUsername(Photo photo, View convertView) {
-        TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
+    private void addUsername(Photo photo, ViewHolder viewHolder) {
         String coloredUsername = "<strong><font color='navy'>" + photo.author.username + "</font></strong></strong>";
-        tvUsername.setText(Html.fromHtml(coloredUsername));
-        return convertView;
+        viewHolder.tvUsername.setText(Html.fromHtml(coloredUsername));
     }
 
-    private View addProfileImage(Photo photo, View convertView) {
-        RoundedImageView ivUserProfilePicture = (RoundedImageView) convertView.findViewById(R.id.ivUserProfilePicture);
-        ivUserProfilePicture.setImageResource(0);
+    private void addProfileImage(Photo photo, ViewHolder viewHolder) {
+        viewHolder.ivUserProfilePicture.setImageResource(0);
         Picasso.with(getContext())
                 .load(photo.author.profileImgUrl)
                 .placeholder(R.drawable.ic_launcher)
-                .into(ivUserProfilePicture);
-        return convertView;
+                .into(viewHolder.ivUserProfilePicture);
     }
 
-    private View addLikes(Photo photo, View convertView) {
-        TextView tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
+    private void addLikes(Photo photo, ViewHolder viewHolder) {
         String fullLikes = "<strong><font color='navy'>" + photo.likesCount + " likes</font></strong>";
-        tvLikes.setText(Html.fromHtml(fullLikes));
-        return convertView;
+        viewHolder.tvLikes.setText(Html.fromHtml(fullLikes));
     }
 
-    private View addLastComment(Comment comment, View convertView) {
-        TextView tvComment = (TextView) convertView.findViewById(R.id.tvComment1);
+    private void addLastComment(Comment comment, ViewHolder viewHolder) {
         String fullComment = "<strong><font color='navy'>" + comment.author.username + "</font></strong> "
                 + comment.content;
-        tvComment.setText(Html.fromHtml(fullComment));
-        return convertView;
+        viewHolder.tvComment.setText(Html.fromHtml(fullComment));
     }
 
-    private View addViewComments(Photo photo, View convertView) {
-        TextView viewComments = (TextView) convertView.findViewById(R.id.viewComments);
+    private void addViewComments(Photo photo, ViewHolder viewHolder) {
         String fullViewComment = "<font color='gray'>view all " + photo.commentCount + " comments</gray>";
-        viewComments.setText(Html.fromHtml(fullViewComment));
-        setupClickListener(viewComments, photo.mediaId);
-        return convertView;
+        viewHolder.viewComments.setText(Html.fromHtml(fullViewComment));
+        setupClickListener(viewHolder.viewComments, photo.mediaId);
     }
 
     private void setupClickListener(TextView viewCommentsButton, final String mediaId) {
@@ -121,4 +127,13 @@ public class PhotosAdapter extends ArrayAdapter<Photo>{
         });
     }
 
+    private static class ViewHolder {
+        TextView tvCaption;
+        FullImageView imgPhoto;
+        TextView tvUsername;
+        RoundedImageView ivUserProfilePicture;
+        TextView tvLikes;
+        TextView tvComment;
+        TextView viewComments;
+    }
 }
