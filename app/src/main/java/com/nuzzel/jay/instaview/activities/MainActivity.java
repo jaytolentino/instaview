@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
                     photosJson = response.getJSONArray("data");
                     for (int i = 0; i < photosJson.length(); i++) {
                         JSONObject photoData = photosJson.getJSONObject(i);
-                        Photo photo = createPhoto(photoData);
+                        Photo photo = new Photo(photoData);
                         photos.add(photo);
                     }
                     aPhotos.notifyDataSetChanged();
@@ -100,38 +100,6 @@ public class MainActivity extends Activity {
             public void onFailure(int statusCode, Header[] headers,
                                   String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-            }
-
-            private Photo createPhoto(JSONObject data) {
-                try {
-                    Photo photo = new Photo();
-                    photo.author.username = data.getJSONObject("user").getString("username");
-                    photo.author.profileImgUrl = data.getJSONObject("user").
-                            getString("profile_picture");
-
-                    if (!data.isNull("caption")) {
-                        photo.caption = data.getJSONObject("caption").getString("text");
-                    }
-
-                    photo.imgUrl = data.getJSONObject("images")
-                            .getJSONObject("standard_resolution").getString("url");
-                    photo.likesCount = data.getJSONObject("likes").getInt("count");
-                    photo.mediaId = data.getString("id");
-                    photo.commentCount = data.getJSONObject("comments").getInt("count");
-
-                    JSONArray commentData = data.getJSONObject("comments").getJSONArray("data");
-                    JSONObject lastCommentData = commentData.getJSONObject(commentData.length() - 1);
-                    User commentAuthor = new User(
-                            lastCommentData.getJSONObject("from").getString("username"),
-                            lastCommentData.getJSONObject("from").getString("profile_picture")
-                    );
-                    String content = lastCommentData.getString("text");
-                    photo.lastComment = new Comment(commentAuthor, content);
-
-                    return photo;
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
             }
         });
 

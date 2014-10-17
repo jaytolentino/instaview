@@ -64,13 +64,13 @@ public class PhotosAdapter extends ArrayAdapter<Photo>{
         addUsername(photo, viewHolder);
         addProfileImage(photo, viewHolder);
         addLikes(photo, viewHolder);
-        addLastComment(photo.lastComment, viewHolder);
+        addLastComment(photo.getLastComment(), viewHolder);
         addViewComments(photo, viewHolder);
     }
 
     private void addCaption(Photo photo, ViewHolder viewHolder) {
-        if (photo.caption != null) {
-            String fullCaption = "<strong><font color='navy'>" + photo.author.username + "</font></strong> " + photo.caption;
+        if (photo.getCaption() != null) {
+            String fullCaption = "<strong><font color='navy'>" + photo.getAuthor().username + "</font></strong> " + photo.getCaption();
             viewHolder.tvCaption.setText(Html.fromHtml(fullCaption));
         }
         else {
@@ -81,26 +81,26 @@ public class PhotosAdapter extends ArrayAdapter<Photo>{
     private void addPhotoImage(Photo photo, ViewHolder viewHolder) {
         viewHolder.imgPhoto.setImageResource(0);
         Picasso.with(getContext())
-                .load(photo.imgUrl)
+                .load(photo.getImgUrl())
                 .placeholder(R.drawable.ic_launcher)
                 .into(viewHolder.imgPhoto);
     }
 
     private void addUsername(Photo photo, ViewHolder viewHolder) {
-        String coloredUsername = "<strong><font color='navy'>" + photo.author.username + "</font></strong></strong>";
+        String coloredUsername = "<strong><font color='navy'>" + photo.getAuthor().username + "</font></strong></strong>";
         viewHolder.tvUsername.setText(Html.fromHtml(coloredUsername));
     }
 
     private void addProfileImage(Photo photo, ViewHolder viewHolder) {
         viewHolder.ivUserProfilePicture.setImageResource(0);
         Picasso.with(getContext())
-                .load(photo.author.profileImgUrl)
+                .load(photo.getAuthor().profileImgUrl)
                 .placeholder(R.drawable.ic_launcher)
                 .into(viewHolder.ivUserProfilePicture);
     }
 
     private void addLikes(Photo photo, ViewHolder viewHolder) {
-        String fullLikes = "<strong><font color='navy'>" + photo.likesCount + " likes</font></strong>";
+        String fullLikes = "<strong><font color='navy'>" + photo.getLikesCount() + " likes</font></strong>";
         viewHolder.tvLikes.setText(Html.fromHtml(fullLikes));
     }
 
@@ -111,9 +111,9 @@ public class PhotosAdapter extends ArrayAdapter<Photo>{
     }
 
     private void addViewComments(Photo photo, ViewHolder viewHolder) {
-        String fullViewComment = "<font color='gray'>view all " + photo.commentCount + " comments</gray>";
+        String fullViewComment = "<font color='gray'>view all " + photo.getCommentCount() + " comments</gray>";
         viewHolder.viewComments.setText(Html.fromHtml(fullViewComment));
-        setupClickListener(viewHolder.viewComments, photo.mediaId);
+        setupClickListener(viewHolder.viewComments, photo.getMediaId());
     }
 
     private void setupClickListener(TextView viewCommentsButton, final String mediaId) {
