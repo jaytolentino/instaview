@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/popular_photos_caption" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewCommentsActivity"
+            android:name=".activities.ViewCommentsActivity"
             android:label="@string/title_activity_view_comments" >
         </activity>
     </application>

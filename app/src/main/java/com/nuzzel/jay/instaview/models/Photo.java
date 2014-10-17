@@ -1,4 +1,4 @@
-package com.nuzzel.jay.instaview;
+package com.nuzzel.jay.instaview.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

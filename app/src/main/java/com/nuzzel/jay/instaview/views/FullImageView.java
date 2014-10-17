@@ -1,4 +1,4 @@
-package com.nuzzel.jay.instaview;
+package com.nuzzel.jay.instaview.views;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

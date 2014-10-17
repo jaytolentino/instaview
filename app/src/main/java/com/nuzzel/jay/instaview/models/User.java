@@ -1,4 +1,4 @@
-package com.nuzzel.jay.instaview;
+package com.nuzzel.jay.instaview.models;
 
 /**
  * Created by jay on 10/5/14.

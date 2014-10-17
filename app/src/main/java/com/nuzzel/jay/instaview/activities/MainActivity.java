@@ -1,15 +1,19 @@
-package com.nuzzel.jay.instaview;
+package com.nuzzel.jay.instaview.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.nuzzel.jay.instaview.models.Comment;
+import com.nuzzel.jay.instaview.models.Photo;
+import com.nuzzel.jay.instaview.adapters.PhotosAdapter;
+import com.nuzzel.jay.instaview.R;
+import com.nuzzel.jay.instaview.models.User;
 
 import org.apache.http.Header;
 import org.json.JSONArray;

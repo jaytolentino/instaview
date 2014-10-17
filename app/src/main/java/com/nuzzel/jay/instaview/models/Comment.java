@@ -1,4 +1,4 @@
-package com.nuzzel.jay.instaview;
+package com.nuzzel.jay.instaview.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

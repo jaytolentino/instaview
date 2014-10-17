@@ -1,4 +1,4 @@
-package com.nuzzel.jay.instaview;
+package com.nuzzel.jay.instaview.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,20 +6,18 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.makeramen.RoundedImageView;
+import com.nuzzel.jay.instaview.R;
+import com.nuzzel.jay.instaview.activities.ViewCommentsActivity;
+import com.nuzzel.jay.instaview.models.Comment;
+import com.nuzzel.jay.instaview.models.Photo;
+import com.nuzzel.jay.instaview.views.FullImageView;
 import com.squareup.picasso.Picasso;
 
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

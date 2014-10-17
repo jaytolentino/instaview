@@ -1,15 +1,15 @@
-package com.nuzzel.jay.instaview;
+package com.nuzzel.jay.instaview.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.nuzzel.jay.instaview.adapters.CommentsAdapter;
+import com.nuzzel.jay.instaview.R;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
